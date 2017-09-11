@@ -159,6 +159,42 @@
                 "description": "IP address or name of the host where the application runs on.",
                 "default": "localhost"
               },
+              "pauseNextScript": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "description": "Some information describing which scripts to stop",
+                    "properties": {
+                      "stopOnScriptName": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "item": [
+                              "string"
+                            ]
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "description": "The name of the scripts you want to debug"
+                      },
+                      "stopOnSourcePattern": {
+                        "description": "An array of Regexs matching the names of the scripts to be stopped",
+                        "type": "string"
+                      },
+                      "stopOnClientInfoId": {
+                        "description": "An array of Regexs matching the names of the scripts to be stopped",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  {
+                    "type": "boolean",
+                    "description": "Pause all Scripts"
+                  }
+                ]
+              },
               "debuggerPort": {
                 "type": "number",
                 "description": "The debug port to attach to.",

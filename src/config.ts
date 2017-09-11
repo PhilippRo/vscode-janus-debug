@@ -76,6 +76,21 @@ const initialConfigurations = [
         },
         timeout: 6000
     },
+    {
+        name: 'Attach to Server',
+        request: 'attach',
+        type: 'janus',
+        host: 'localhost',
+        debuggerPort: 8089,
+        log: {
+            fileName: '${workspaceRoot}/vscode-janus-debug-attach.log',
+            logLevel: {
+                default: 'Debug',
+            },
+        },
+        timeout: 6000,
+        pauseNextScript: true
+    },
 ];
 
 /**
