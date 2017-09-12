@@ -77,7 +77,7 @@ const initialConfigurations = [
         timeout: 6000
     },
     {
-        name: 'Attach to Server',
+        name: 'Pause Next Script',
         request: 'attach',
         type: 'janus',
         host: 'localhost',
@@ -89,7 +89,11 @@ const initialConfigurations = [
             },
         },
         timeout: 6000,
-        pauseNextScript: true
+        pauseNextScript: {
+            stopOnScriptName: ["someScript.js", "otherScript.js"],
+            stopOnSourcePattern: "*",
+            stopOnClientInfoId: 1
+        }
     },
 ];
 
