@@ -33,6 +33,7 @@
     "workspaceContains:documents-scripting-settings.json",
     "onCommand:extension.vscode-janus-debug.provideInitialConfigurations",
     "onCommand:extension.vscode-janus-debug.askForPassword",
+    "onCommand:extension.vscode-janus-debug.askForScriptName",
     "onCommand:extension.vscode-janus-debug.uploadScript",
     "onCommand:extension.vscode-janus-debug.downloadScript",
     "onCommand:extension.vscode-janus-debug.runScript",
@@ -160,40 +161,55 @@
                 "default": "localhost"
               },
               "pauseNextScript": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "description": "Some information describing which scripts to stop",
-                    "properties": {
-                      "stopOnScriptName": {
-                        "anyOf": [
-                          {
-                            "type": "array",
-                            "item": [
-                              "string"
-                            ]
-                          },
-                          {
-                            "type": "string"
-                          }
-                        ],
-                        "description": "The name of the scripts you want to debug"
+                "type": "object",
+                "description": "Some information describing which scripts to stop",
+                "required": ["username", "password", "principal","host","applicationPort"],
+                "properties": {
+                  "stopOnScriptName": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "item": [
+                          "string"
+                        ]
                       },
-                      "stopOnSourcePattern": {
-                        "description": "An array of Regexs matching the names of the scripts to be stopped",
+                      {
                         "type": "string"
-                      },
-                      "stopOnClientInfoId": {
-                        "description": "An array of Regexs matching the names of the scripts to be stopped",
-                        "type": "number"
                       }
-                    }
+                    ],
+                    "description": "The name of the scripts you want to debug"
                   },
-                  {
-                    "type": "boolean",
-                    "description": "Pause all Scripts"
+                  "stopOnSourcePattern": {
+                    "description": "An array of Regexs matching the names of the scripts to be stopped",
+                    "type": "string"
+                  },
+                  "stopOnClientInfoId": {
+                    "description": "An array of Regexs matching the names of the scripts to be stopped",
+                    "type": "number"
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "A username (admin or username.principal). The script is executed in the context of this user."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "The user's password."
+                  },
+                  "principal": {
+                    "type": "string",
+                    "description": "Your user's client affiliation. Leave empty if there is none."
+                  },
+                  "host": {
+                    "type": "string",
+                    "description": "IP address or name of the host where you want to run the script.",
+                    "default": "localhost"
+                  },
+                  "applicationPort": {
+                    "type": "number",
+                    "description": "The port on which the target server listens.",
+                    "default": 10000
                   }
-                ]
+                }
               },
               "debuggerPort": {
                 "type": "number",

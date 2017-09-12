@@ -90,9 +90,14 @@ const initialConfigurations = [
         },
         timeout: 6000,
         pauseNextScript: {
-            stopOnScriptName: ["someScript.js", "otherScript.js"],
+            stopOnScriptName: "${command:extension.vscode-janus-debug.askForScriptName}",
             stopOnSourcePattern: "*",
-            stopOnClientInfoId: 1
+            stopOnClientInfoId: 1,
+            username: "",
+            password: "${command:extension.vscode-janus-debug.askForPassword}",
+            principal: "",
+            host: "localhost",
+            applicationPort: 10000,
         }
     },
 ];

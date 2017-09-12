@@ -260,6 +260,15 @@ export function activate(context: vscode.ExtensionContext): void {
     }));
 
     context.subscriptions.push(
+        vscode.commands.registerCommand('extension.vscode-janus-debug.askForScriptName', () => {
+            return vscode.window.showInputBox({
+                prompt: 'Please enter a script name',
+                password: false,
+                ignoreFocusOut: false,
+            });
+        }));
+
+    context.subscriptions.push(
         vscode.commands.registerCommand('extension.vscode-janus-debug.provideInitialConfigurations', () => {
             return provideInitialConfigurations(vscode.workspace.rootPath);
         }));
